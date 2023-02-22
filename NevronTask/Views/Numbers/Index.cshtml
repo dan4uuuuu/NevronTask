@@ -1,0 +1,54 @@
+﻿@model NevronTask.Models.NumbersViewModel
+
+@{
+    ViewData["Title"] = "Numbers";
+}
+
+<h1>Numbers</h1>
+
+<div>
+    <h4>Numbers</h4>
+    <hr />
+    
+     <div class="row" style="height: 50px;">
+        <div>
+            @Html.DisplayNameFor(model => model.Elements)
+        </div>
+        <div>
+            @foreach (var item in Model.Elements)
+            {
+                <span class="groupNumbers">
+                    @item
+                </span>
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sum)
+        </div>
+        <div class="col-sm-10">
+           @if(Model.Sum == 0){
+               <div>Not Summed</div>
+           }
+           else{
+            @Html.DisplayFor(model => model.Sum)
+           }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            Count:
+        </div>
+        <div class="col-sm-10">
+            @Model.Elements.Count()
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Add", "Add")
+    @Html.ActionLink("Sum", "Sum")
+    @Html.ActionLink("Clear", "Clear")
+</div>
+
